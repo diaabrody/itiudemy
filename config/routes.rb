@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :lectures
+
+  resources :lectures do
+    member do
+      put "like" => "lectures#upvote"
+      put "unlike" => "lectures#downvote"
+    end
+  end
+
   resources :courses
   devise_for :users
   root to: 'courses#index'

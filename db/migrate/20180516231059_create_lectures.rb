@@ -4,7 +4,6 @@ class CreateLectures < ActiveRecord::Migration[5.1]
       t.string :content
       t.string :attachment
       t.integer :course_id
-
       t.timestamps
     end
   end

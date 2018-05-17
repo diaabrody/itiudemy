@@ -4,18 +4,40 @@
 
   <% @course.lectures.each do |lecture| %>
 <div class="well col-xs-8 col-xs-offset-2">
-  <h2 align="center"> Content :   <%= lecture.content %> </h2>
+  <h3 align="center" style="color: blue"> Content</h3>
+  <p> <%= lecture.content %> </p>
 <h4 class="center" ><strong>Files:</strong></h4>
 
-  <%= File.read( '/uploads/lecture/attachment/DiaaOsama.pdf' ) %>
+  <iframe src="<%= lecture.attachment %>" allowfullscreen   ></iframe>
 
 <hr>
 
 <div class="lecture-actions">
+  <%= link_to like_lecture_path(lecture) , class: "like" , method: :put do %>
 
-  <%= link_to "like" ,edit_lecture_path(lecture)  , class: 'btn btn-xs btn-primary'%>
-  <%= link_to 'Edit', edit_lecture_path(lecture) ,  class: 'btn btn-xs  btn-danger' %>
-  <%= link_to 'Leave Comment', courses_path  , class: 'btn btn-xs  btn-success'%>
+    <button type="button" class="btn btn-info" aria-label="Left Aligin">
+
+      <span class = "glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hiden="true"></span>
+      <span class="badge"><%= lecture.get_upvotes.size %> </span>
+
+    </button>
+
+  <% end %>
+
+
+  <%= link_to unlike_lecture_path(lecture) , class: "like" , method: :put do %>
+
+    <button type="button" class="btn btn-info" aria-label="Left Aligin">
+
+      <span class = "glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hiden="true"></span>
+      <span class="badge"><%= lecture.get_downvotes.size %> </span>
+
+    </button>
+
+  <% end %>
+  <%= link_to 'span', courses_path, class: 'btn btn-md  btn-danger' %>
+  <%= link_to 'Leave Comment', courses_path  , class: 'btn btn-md  btn-success'%>
+
 </div>
 </div>
 

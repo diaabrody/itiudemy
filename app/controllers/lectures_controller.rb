@@ -1,5 +1,5 @@
 class LecturesController < ApplicationController
-  before_action :set_lecture, only: [:show, :edit, :update, :destroy]
+  before_action :set_lecture, only: [:show, :edit, :update, :destroy ,:upvote , :downvote ]
 
   # GET /lectures
   # GET /lectures.json
@@ -60,6 +60,24 @@ class LecturesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+  def upvote
+
+    @lecture.upvote_from current_user
+    redirect_to course_path(@lecture.course)
+
+  end
+
+
+def downvote
+
+  @lecture.downvote_from current_user
+  redirect_to course_path(@lecture.course)
+end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

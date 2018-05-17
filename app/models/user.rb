@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
 
   mount_uploader :avatar, AvatarUploader
-
+  acts_as_voter
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
