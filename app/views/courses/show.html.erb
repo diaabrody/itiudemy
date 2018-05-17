@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+
+  <% @course.lectures.each do |lecture| %>
+<div class="well col-xs-8 col-xs-offset-2">
+  <h2 align="center"> Content :   <%= lecture.content %> </h2>
+<h4 class="center" ><strong>Files:</strong></h4>
+
+  <%= File.read( '/uploads/lecture/attachment/DiaaOsama.pdf' ) %>
+
+<hr>
+
+<div class="lecture-actions">
+
+  <%= link_to "like" ,edit_lecture_path(lecture)  , class: 'btn btn-xs btn-primary'%>
+  <%= link_to 'Edit', edit_lecture_path(lecture) ,  class: 'btn btn-xs  btn-danger' %>
+  <%= link_to 'Leave Comment', courses_path  , class: 'btn btn-xs  btn-success'%>
+</div>
+</div>
+
+<%end %>
+
+
