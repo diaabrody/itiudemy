@@ -1,5 +1,6 @@
 class LecturesController < ApplicationController
-  before_action :set_lecture, only: [:show, :edit, :update, :destroy ,:upvote , :downvote ]
+  before_action :set_lecture, only: [:show, :edit, :update, :destroy ,:upvote , :downvote , :makespan ]
+  before_action
 
   # GET /lectures
   # GET /lectures.json
@@ -78,6 +79,17 @@ def downvote
 end
 
 
+
+  def makespan
+
+    currentlecture=Lecture.find(params[:id])
+
+    current_user.lectures << currentlecture
+
+    redirect_to course_path(@lecture.course)
+
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

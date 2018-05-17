@@ -2,7 +2,6 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-
   mount_uploader :avatar, AvatarUploader
   acts_as_voter
   devise :database_authenticatable, :registerable,
@@ -13,6 +12,8 @@ class User < ApplicationRecord
   # User Avatar Validation
   validates_integrity_of  :avatar
   validates_processing_of :avatar
+
+  has_and_belongs_to_many :lectures
 
   private
   def avatar_size_validation

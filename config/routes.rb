@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     member do
       put "like" => "lectures#upvote"
       put "unlike" => "lectures#downvote"
+      get 'makespan'
+
     end
   end
 

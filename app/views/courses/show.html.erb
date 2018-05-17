@@ -35,9 +35,24 @@
     </button>
 
   <% end %>
-  <%= link_to 'span', courses_path, class: 'btn btn-md  btn-danger' %>
+  <% if user_signed_in? %>
   <%= link_to 'Leave Comment', courses_path  , class: 'btn btn-md  btn-success'%>
 
+
+  <% @lecturesuser = current_user.lectures %>
+
+  <% if @lecturesuser.include?(lecture) %>
+    <span style="color: red"> you spaned this lecture</span>
+
+  <% else %>
+
+    <%= link_to 'span', makespan_lecture_path(lecture), class: 'btn btn-md  btn-danger' %>
+
+  <% end %>
+
+  <% end %>
+
+  <h4>total spans :<%=lecture.users.count%></h4>
 </div>
 </div>
 

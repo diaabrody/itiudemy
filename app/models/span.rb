@@ -1,6 +1,0 @@
-class Span < ApplicationRecord
-  
-
-
-
-end
