@@ -26,7 +26,7 @@ class LecturesController < ApplicationController
   # POST /lectures.json
   def create
     @lecture = Lecture.new(lecture_params)
-
+    @lecture.user_id=current_user.id
     respond_to do |format|
       if @lecture.save
         format.html { redirect_to @lecture, notice: 'Lecture was successfully created.' }

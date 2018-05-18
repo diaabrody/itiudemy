@@ -5,7 +5,7 @@
   <% @course.lectures.each do |lecture| %>
 <div class="well col-xs-8 col-xs-offset-2">
   <h3 align="center" style="color: blue"> Content</h3>
-  <p> <%= lecture.content %> </p>
+  <p> <%= raw lecture.content %> </p>
 <h4 class="center" ><strong>Files:</strong></h4>
 
   <iframe src="<%= lecture.attachment %>" allowfullscreen   ></iframe>
@@ -41,6 +41,11 @@
   <%= link_to 'Leave Comment', lecture_path(lecture), class: 'btn btn-md  btn-success' %>
   <% if user_signed_in? %>
 
+  <% @userid = current_user.id %>
+  <% if lecture.user_id == @userid  %>
+
+  <%= link_to 'Edit' ,  edit_lecture_path(lecture) , class: 'btn btn-danger' %>
+<%end%>
   <% @lecturesuser = current_user.lectures %>
 
   <% if @lecturesuser.include?(lecture) %>

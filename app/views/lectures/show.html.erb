@@ -2,7 +2,7 @@
 <h4>Content:</h4>
 <p style="color: red">
 
-  <%= @lecture.content %>
+  <%= raw @lecture.content %>
 </p>
 
 
@@ -31,6 +31,4 @@
 <%= render 'comments/comment'%>
 
 
-<%= link_to 'Edit', edit_lecture_path(@lecture) %> |
-<%= link_to 'Back', lectures_path %>
 

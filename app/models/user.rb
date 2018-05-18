@@ -9,12 +9,19 @@ class User < ApplicationRecord
 
   enum gender: {male: 0, female: 1}
 
+
+  validates :name, uniqueness: true
+  validates :name, presence: true
+  validates :avatar, presence: true
+
   # User Avatar Validation
   validates_integrity_of  :avatar
   validates_processing_of :avatar
 
   has_and_belongs_to_many :lectures
   has_many :comments
+
+
 
   private
   def avatar_size_validation
