@@ -10,7 +10,10 @@
 
   <iframe src="<%= lecture.attachment %>" allowfullscreen   ></iframe>
 
+
 <hr>
+
+
 
 <div class="lecture-actions">
   <%= link_to like_lecture_path(lecture) , class: "like" , method: :put do %>
@@ -35,9 +38,8 @@
     </button>
 
   <% end %>
+  <%= link_to 'Leave Comment', lecture_path(lecture), class: 'btn btn-md  btn-success' %>
   <% if user_signed_in? %>
-  <%= link_to 'Leave Comment', courses_path  , class: 'btn btn-md  btn-success'%>
-
 
   <% @lecturesuser = current_user.lectures %>
 

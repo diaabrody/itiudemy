@@ -1,7 +1,6 @@
 class LecturesController < ApplicationController
   before_action :set_lecture, only: [:show, :edit, :update, :destroy ,:upvote , :downvote , :makespan ]
-  before_action
-
+  before_action :authenticate_user!, :only => [:upvote , :downvote  , :show  , :makespan ]
   # GET /lectures
   # GET /lectures.json
   def index
@@ -11,6 +10,7 @@ class LecturesController < ApplicationController
   # GET /lectures/1
   # GET /lectures/1.json
   def show
+    @comments= Comment.where(lecture_id:  @lecture)
   end
 
   # GET /lectures/new

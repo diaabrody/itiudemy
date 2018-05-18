@@ -8,5 +8,7 @@ class Lecture < ApplicationRecord
   validates_processing_of :attachment
   has_and_belongs_to_many :users
   belongs_to :course
+  has_many :comments
+
 
 end

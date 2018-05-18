@@ -5,11 +5,13 @@ Rails.application.routes.draw do
       put "like" => "lectures#upvote"
       put "unlike" => "lectures#downvote"
       get 'makespan'
+      resources :comments
 
     end
   end
 
   resources :courses
+
   devise_for :users
   root to: 'courses#index'
 
