@@ -15,8 +15,16 @@
 
   <div class="field">
     <%= f.label :gender %>
+    <br>
     <%= f.select :gender, User.genders.keys %>
   </div>
+
+  <div class="field">
+    <%= f.label :register_as  %>
+    <br>
+    <%= f.select :role, User.roles.keys %>
+  </div>
+
 
   <div class="field">
     <%= f.label :password %>

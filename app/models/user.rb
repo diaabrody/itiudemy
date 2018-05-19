@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   enum gender: {male: 0, female: 1}
 
+  enum role: {student: 0, instructor: 1}
+
 
   validates :name, uniqueness: true
   validates :name, presence: true

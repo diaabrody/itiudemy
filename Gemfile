@@ -40,6 +40,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'ckeditor'
+gem 'cancancan', '~> 2.0'
 
 gem 'paperclip'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'

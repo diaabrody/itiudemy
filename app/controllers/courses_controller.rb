@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_permission, only: [ :edit, :update, :destroy , :create , :new]
+  # load_and_authorize_resource
   # GET /courses
   # GET /courses.json
   def index
@@ -19,13 +20,14 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+
   end
 
   # POST /courses
   # POST /courses.json
   def create
+ 
     @course = Course.new(course_params)
-
     respond_to do |format|
       if @course.save
         format.html { redirect_to courses_path, notice: 'Course was successfully created.' }
@@ -71,4 +73,12 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:title)
     end
+
+    def set_permission
+      authorize! :read, @course
+      authorize! :show, @course
+ 
+    end
+
+    
 end

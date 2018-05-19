@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-    permit_params :name , :birthday , :gender , :email , :avatar , :password 
+    permit_params :name , :birthday , :gender , :email , :avatar , :password , :role 
     index do
 
         selectable_column
@@ -20,6 +20,7 @@ ActiveAdmin.register User do
           f.input :name
           f.input :avatar
           f.input :gender
+          f.input :role
           f.input :birthday , start_year: 1900
           f.input :password
         

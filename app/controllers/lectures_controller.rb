@@ -1,6 +1,8 @@
 class LecturesController < ApplicationController
   before_action :set_lecture, only: [:show, :edit, :update, :destroy ,:upvote , :downvote , :makespan ]
   before_action :authenticate_user!, :only => [:upvote , :downvote  , :show  , :makespan ]
+  before_action :set_permission, only: [ :edit, :update, :destroy , :create , :new]
+
   # GET /lectures
   # GET /lectures.json
   def index
@@ -100,5 +102,11 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def lecture_params
       params.require(:lecture).permit(:content, :attachment,:attachment_cache , :course_id)
+    end
+
+    def set_permission
+      authorize! :read, @lecture
+      authorize! :show, @lecture
+   
     end
 end
