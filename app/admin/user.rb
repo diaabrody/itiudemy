@@ -9,7 +9,7 @@ ActiveAdmin.register User do
         column :name
         column :avatar
         column :gender 
-        column :birthday    
+        column :birthday     
 
 
     end
@@ -20,7 +20,7 @@ ActiveAdmin.register User do
           f.input :name
           f.input :avatar
           f.input :gender
-          f.input :birthday 
+          f.input :birthday , start_year: 1900
           f.input :password
         
         
