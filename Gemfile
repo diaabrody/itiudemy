@@ -42,6 +42,8 @@ gem 'acts_as_votable', '~> 0.11.1'
 gem 'ckeditor'
 
 gem 'paperclip'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 
 
 group :development, :test do
