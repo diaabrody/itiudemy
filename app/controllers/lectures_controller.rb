@@ -2,7 +2,7 @@ class LecturesController < ApplicationController
   before_action :set_lecture, only: [:show, :edit, :update, :destroy ,:upvote , :downvote , :makespan ]
   before_action :authenticate_user!, :only => [:upvote , :downvote  , :show  , :makespan ]
   #before_action :set_permission, only: [ :edit, :update, :destroy , :create , :new]
-  load_and_authorize_resource :except => [:upvote , :downvote]
+  load_and_authorize_resource :except => [:upvote , :downvote , :makespan]
   # GET /lectures
   # GET /lectures.json
   def index
