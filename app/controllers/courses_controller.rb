@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :set_permission, only: [ :edit, :update, :destroy , :create , :new]
-  # load_and_authorize_resource
+ # before_action :set_permission, only: [ :edit, :update, :destroy , :create , :new]
+ load_and_authorize_resource 
   # GET /courses
   # GET /courses.json
   def index
@@ -28,6 +28,8 @@ class CoursesController < ApplicationController
   def create
  
     @course = Course.new(course_params)
+    @course.user_id=current_user.id
+
     respond_to do |format|
       if @course.save
         format.html { redirect_to courses_path, notice: 'Course was successfully created.' }
@@ -44,7 +46,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to course, notice: 'Course was successfully updated.' }
+        format.html { redirect_to courses_path, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }

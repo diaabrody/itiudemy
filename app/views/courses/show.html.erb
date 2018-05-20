@@ -41,11 +41,18 @@
   <%= link_to 'Leave Comment', lecture_path(lecture), class: 'btn btn-md  btn-success' %>
   <% if user_signed_in? %>
 
-  <% @userid = current_user.id %>
-  <% if lecture.user_id == @userid  %>
+  <% if can? :update, lecture %>
 
   <%= link_to 'Edit' ,  edit_lecture_path(lecture) , class: 'btn btn-danger' %>
-<%end%>
+
+  <%end%>
+
+
+  <% if can? :update, lecture %>
+
+  <%= link_to 'Delete', lecture, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger' %>
+  <%end%>
+
   <% @lecturesuser = current_user.lectures %>
 
   <% if @lecturesuser.include?(lecture) %>

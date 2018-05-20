@@ -19,7 +19,13 @@
             <p class="card-text">this course is awsome buy it </p>
           </div>
           <div class="card-footer">
-            <%= link_to 'Show Course' , course_path(course) ,class: 'btn btn-success' %>
+            <%= link_to 'Show Course' , course_path(course) ,class: 'btn btn-md btn-success' %>
+            <% if can? :update, course %>
+
+            <%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-md btn-danger' %>
+            <%= link_to 'Edit' ,  edit_course_path(course) , class: 'btn btn-danger' %>
+
+            <%end%>
           </div>
         </div>
       </div>

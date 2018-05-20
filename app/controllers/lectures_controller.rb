@@ -1,8 +1,8 @@
 class LecturesController < ApplicationController
   before_action :set_lecture, only: [:show, :edit, :update, :destroy ,:upvote , :downvote , :makespan ]
   before_action :authenticate_user!, :only => [:upvote , :downvote  , :show  , :makespan ]
-  before_action :set_permission, only: [ :edit, :update, :destroy , :create , :new]
-
+  #before_action :set_permission, only: [ :edit, :update, :destroy , :create , :new]
+  load_and_authorize_resource :except => [:upvote , :downvote]
   # GET /lectures
   # GET /lectures.json
   def index
@@ -59,7 +59,7 @@ class LecturesController < ApplicationController
   def destroy
     @lecture.destroy
     respond_to do |format|
-      format.html { redirect_to lectures_url, notice: 'Lecture was successfully destroyed.' }
+      format.html { redirect_to course_path(@lecture.course), notice: 'Lecture was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
